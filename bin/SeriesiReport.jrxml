@@ -244,15 +244,12 @@ FROM railway.`Series`]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="44" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<textField>
-				<reportElement x="400" y="9" width="160" height="30" uuid="cf3f2897-80e8-4e7c-88c8-d7ae55ee409c"/>
+				<reportElement x="400" y="9" width="160" height="22" uuid="cf3f2897-80e8-4e7c-88c8-d7ae55ee409c"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
-	<summary>
-		<band height="32" splitType="Stretch"/>
-	</summary>
 </jasperReport>

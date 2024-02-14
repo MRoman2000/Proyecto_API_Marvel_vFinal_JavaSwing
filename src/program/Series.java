@@ -45,7 +45,7 @@ public class Series {
 		});
 		hilo.start();
 	}
-
+	// Se muestra los datos
 	public void printSeriesInfo() {
 		System.out.println("ID: " + id);
 		System.out.println("Serie: " + title);

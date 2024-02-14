@@ -40,7 +40,7 @@ public class LeerDatos extends JFrame {
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
-	
+
 	public LeerDatos() {
 		setTitle("Mostrar Datos");
 		setBackground(new Color(0, 128, 192));
@@ -119,7 +119,7 @@ public class LeerDatos extends JFrame {
 		btn_irMenuPrincipal.setBackground(new Color(255, 128, 0));
 		btn_irMenuPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Muestra el menu principal 
+				// Muestra el menu principal
 				MenuPrincipal principal = new MenuPrincipal();
 				principal.setVisible(true);
 				dispose();
@@ -129,9 +129,10 @@ public class LeerDatos extends JFrame {
 		panel.add(btn_irMenuPrincipal);
 
 		JPanel panel_tabla = new JPanel();
-		DefaultTableModel model = new DefaultTableModel();
+		DefaultTableModel model = new DefaultTableModel(); // Se crea un nuevo modelo de tabla.
 		table = new JTable(model);
 		table.setFillsViewportHeight(true);
+		// Se agregan las columnas a la tabla
 		model.addColumn("id");
 		model.addColumn("title");
 		model.addColumn("description");
@@ -152,6 +153,8 @@ public class LeerDatos extends JFrame {
 		panel_tabla.add(scrollPane);
 	}
 
+	// Abre un diálogo de selección de archivo utilizando JFileChooser, el cual
+	// permite al usuario seleccionar un archivo desde el sistema de archivos
 	public File seleccionar() {
 		JFileChooser fc = new JFileChooser();
 		fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
@@ -164,7 +167,8 @@ public class LeerDatos extends JFrame {
 		}
 		return null; // Si no se seleccionó ningún archivo
 	}
-
+	
+	// Carga los datos del archivo seleccionado en una tabla
 	public void cargarDatos() {
 		if (rutaFichero != null && !rutaFichero.isEmpty()) {
 			ArrayList<ArrayList<String>> series = JSONandXML.procesarOpcionInsertarDatos(rutaFichero);
@@ -186,7 +190,7 @@ public class LeerDatos extends JFrame {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	// Carga los datos de la tabla Series desde una base de datos MySQL en la tabla
 	private void cargarDatosDesdeMySQL() {
 		ConexionMySQL conexionMySQL = new ConexionMySQL();
 		conexionMySQL.obtenerConexion();

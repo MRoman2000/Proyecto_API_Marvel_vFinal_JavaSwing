@@ -21,7 +21,7 @@ public class JSONandXML {
 
 	// Generar fichero JSON
 	public static void generarJSON(ArrayList<String[]> seriesList) {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter("prueba.json"))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("ficheroJSON.json"))) {
 			writer.write(" [\n");
 			ArrayList<String> etiquetas = obtenerEtiquetas();
 			for (String[] reserva : seriesList) {
@@ -43,7 +43,7 @@ public class JSONandXML {
 				writer.write("\n");
 			}
 			writer.write(" ]\n");
-			System.out.println("Archivo 'prueba.json' generado correctamente.");
+			System.out.println("Archivo 'ficheroJSON.json' generado correctamente.");
 		} catch (IOException e) {
 			System.out.println("Error al generar el archivo JSON: " + e.getMessage());
 		}
@@ -51,7 +51,7 @@ public class JSONandXML {
 
 	// Generar fichero XML
 	public static void generarXML(ArrayList<String[]> seriesList) {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter("prueba.xml"))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("ficheroXML.xml"))) {
 			writer.write("<series>\n");
 			ArrayList<String> etiquetas = obtenerEtiquetas();
 			for (String[] reserva : seriesList) {
@@ -65,12 +65,12 @@ public class JSONandXML {
 				writer.write(" </serie>\n");
 			}
 			writer.write("</series>\n");
-			System.out.println("Archivo 'prueba.xml' generado correctamente.");
+			System.out.println("Archivo 'ficheroXML.xml' generado correctamente.");
 		} catch (IOException e) {
 			System.out.println("Error al generar el archivo XML: " + e.getMessage());
 		}
 	}
-
+	// Se utiliza para reemplazar ciertos caracteres especiales en los valores
 	public static String escaparCaracteresEspeciales(String valor) {
 		valor = valor.replace("&", "&amp;");
 		valor = valor.replace("<", "&lt;");
@@ -178,6 +178,7 @@ public class JSONandXML {
 		return series;
 	}
 
+	// Se inserta los datos en MySQL
 	private static String generarConsultaSQL(ArrayList<ArrayList<String>> series) {
 		StringBuilder sqlBuilder = new StringBuilder();
 		for (ArrayList<String> s : series) {
@@ -189,7 +190,7 @@ public class JSONandXML {
 		}
 		return sqlBuilder.toString();
 	}
-
+	// Generar las consultas SQL y luego las ejecuta en la base de datos MySQL
 	public static void insertarDatosEnMySQLFicheros(ArrayList<ArrayList<String>> series) {
 		ConexionMySQL conexion = new ConexionMySQL();
 		conexion.conexionOpen();

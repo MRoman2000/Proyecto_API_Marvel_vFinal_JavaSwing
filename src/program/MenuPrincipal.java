@@ -24,6 +24,7 @@ public class MenuPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,7 +38,7 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 	}
-	
+
 	public MenuPrincipal() {
 		setTitle("Menu Principal");
 		try {
@@ -53,24 +54,23 @@ public class MenuPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(151, 0, 0));
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
-	
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		ImageIcon icono = new ImageIcon("src\\marvel_logo.png");
 		Image imagen = icono.getImage();
-		// Redimensionar la imagen al tamaño deseado 
+		// Redimensionar la imagen al tamaño deseado
 		Image nuevaImagen = imagen.getScaledInstance(450, 100, Image.SCALE_SMOOTH);
 		// Crear un nuevo ImageIcon con la imagen redimensionada
 		ImageIcon iconoRedimensionado = new ImageIcon(nuevaImagen);
 		// Crear el JLabel y establecer el icono redimensionado
 		lblNewLabel.setIcon(iconoRedimensionado);
 		panel.add(lblNewLabel);
-	
 
 		JPanel panel_superior = new JPanel();
 		panel_superior.setBackground(new Color(151, 0, 0));
@@ -85,7 +85,7 @@ public class MenuPrincipal extends JFrame {
 		JButton btn_generarInforme = new JButton("Generar Informe");
 		btn_generarInforme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Llama a la clase , para generar informe y mostrar en la pantalla 
+				// Llama a la clase , para generar informe y mostrar en la pantalla
 				Informe.generarInforme();
 			}
 		});
@@ -137,7 +137,7 @@ public class MenuPrincipal extends JFrame {
 		JButton btn_generarXML = new JButton("Generar XML");
 		btn_generarXML.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Llama al metodo para generar  fichero XML
+				// Llama al metodo para generar fichero XML
 				procesarDatos(".xml");
 			}
 		});
@@ -153,7 +153,7 @@ public class MenuPrincipal extends JFrame {
 		JButton btn_generarJSON = new JButton("Generar JSON");
 		btn_generarJSON.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Llama al metodo para generar  fichero JSON
+				// Llama al metodo para generar fichero JSON
 				procesarDatos(".json");
 			}
 		});
@@ -166,33 +166,35 @@ public class MenuPrincipal extends JFrame {
 		panel_interior.setBackground(new Color(151, 0, 0));
 		contentPane.add(panel_interior);
 		panel_interior.setLayout(new GridLayout(3, 1, 10, 0));
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		panel_interior.add(lblNewLabel_1);
-		
-				JButton btn_conectarAPI = new JButton("Conectarse a la API");
-				btn_conectarAPI.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						// Llama a la clase Conexion API para sacar los datos de API 
-						ConexionAPI.datosAPI();
-						JOptionPane.showMessageDialog(null, "Base de datos y tabla creadas correctamente");
-					}
-				});
-				btn_conectarAPI.setForeground(new Color(255, 255, 255));
-				btn_conectarAPI.setFont(new Font("Tahoma", Font.ITALIC, 14));
-				btn_conectarAPI.setBackground(new Color(0, 64, 0));
-				panel_interior.add(btn_conectarAPI);
-		
+
+		JButton btn_conectarAPI = new JButton("Conectarse a la API");
+		btn_conectarAPI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Llama a la clase Conexion API para sacar los datos de API
+				ConexionAPI.datosAPI();
+				JOptionPane.showMessageDialog(null, "Base de datos y tabla creadas correctamente");
+			}
+		});
+		btn_conectarAPI.setForeground(new Color(255, 255, 255));
+		btn_conectarAPI.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		btn_conectarAPI.setBackground(new Color(0, 64, 0));
+		panel_interior.add(btn_conectarAPI);
+
 		JLabel lblNewLabel_2 = new JLabel("");
 		panel_interior.add(lblNewLabel_2);
 	}
 
+	// Realiza el procesamiento de los datos de la tabla Series de la base de datos
+	// MySQL y genera un archivo JSON o XML
 	public static void procesarDatos(String formato) {
 		ConexionMySQL conexionMySQL = new ConexionMySQL();
 		conexionMySQL.obtenerConexion();
 		String sql = "SELECT * FROM Series";
 		ArrayList<String[]> datos = conexionMySQL.mostrarTabla(sql);
-		// Dependiendo del fichero , procesa los valores 
+		// Dependiendo del fichero , procesa los valores
 		if (formato.endsWith(".json")) {
 			JSONandXML.generarJSON(datos);
 			JOptionPane.showMessageDialog(null, "Archivo JSON generado correctamente.");

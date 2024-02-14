@@ -50,11 +50,11 @@ public class ConexionAPI {
 						String resourceURI = jo.getString("resourceURI");
 						int startYear = jo.getInt("startYear");
 						int endYear = jo.optInt("endYear");
-				        // Crear objeto Series y agregarlo a la lista
+						// Crear objeto Series y agregarlo a la lista
 						Series series = new Series(id, title, description, resourceURI, startYear, endYear, imagen,
 								available, returned);
 						seriesList.add(series);
-				        // Imprimir información de la serie y guardar en MySQL
+						// Imprimir información de la serie y guardar en MySQL
 						series.printSeriesInfo();
 						series.insertarDatosEnMySQL(seriesList);
 					}
@@ -69,7 +69,8 @@ public class ConexionAPI {
 		}
 	}
 
-// Se genera un hash único que combina el timestamp, la clave privada y la clave pública
+	// Se genera un hash único que combina el timestamp, la clave privada y la clave
+	// pública
 	private static String generateHash(long timeStamp, String privateKey, String publicKey)
 			throws NoSuchAlgorithmException {
 		String input = timeStamp + privateKey + publicKey;

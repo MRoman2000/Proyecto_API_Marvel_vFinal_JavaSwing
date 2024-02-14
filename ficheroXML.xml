@@ -1,16 +1,5 @@
 <series>
  <serie>
-     <id>323</id>
-     <title>Prueba</title>
-     <description>Prueba</description>
-     <resourceURI>Prueba</resourceURI>
-     <startYear>200</startYear>
-     <endYear>2200</endYear>
-     <urlImagen>https://firebasestorage.googleapis.com/v0/b/proyectomarvel-fff80.appspot.com/o/images%2F74b3a020-7af0-4c50-b6ab-87658628e78c?alt=media&amp;token=cef27928-fc7a-4c78-8531-2ea4da0f870f</urlImagen>
-     <storyAvailable>200</storyAvailable>
-     <storyReturned>200</storyReturned>
- </serie>
- <serie>
      <id>489</id>
      <title>1602 (2003 - 2004)</title>
      <description>Award-winning writer Neil Gaiman teams with artist Andy Kubert to re-imagine the Marvel Universe in the year 1602! It&apos;s Spider-Man, the X-Men, Nick Fury, Doctor Strange, Daredevil and more as you&apos;d never think to imagine them in an utterly unique and thrilling tale of high adventure!</description>
@@ -20,17 +9,6 @@
      <urlImagen>http://i.annihil.us/u/prod/marvel/i/mg/9/d0/51926fde9c18a.jpg</urlImagen>
      <storyAvailable>15</storyAvailable>
      <storyReturned>15</storyReturned>
- </serie>
- <serie>
-     <id>6546</id>
-     <title>456456</title>
-     <description>546456</description>
-     <resourceURI>546456</resourceURI>
-     <startYear>456456</startYear>
-     <endYear>456456</endYear>
-     <urlImagen>https://firebasestorage.googleapis.com/v0/b/proyectomarvel-fff80.appspot.com/o/images%2F721fab3d-9ece-4f50-8a3d-e6948bb3eaf4?alt=media&amp;token=359b41df-4a66-4b92-b527-2581c6b7f6ac</urlImagen>
-     <storyAvailable>456456</storyAvailable>
-     <storyReturned>54645645</storyReturned>
  </serie>
  <serie>
      <id>7520</id>

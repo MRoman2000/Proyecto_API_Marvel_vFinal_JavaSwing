@@ -38,7 +38,7 @@ public class Informe {
 		    JasperViewer.viewReport(jasperPrint, false);
 		    
 		    // Muestra la ventana de diálogo para guardar archivo
-		    JFileChooser fileChooser = new JFileChooser();
+		    JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
 		    FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF", "pdf");
 		    fileChooser.setFileFilter(filter);
 		    fileChooser.setSelectedFile(new File("informeSerieMarvel.pdf"));
