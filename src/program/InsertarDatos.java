@@ -273,25 +273,41 @@ public class InsertarDatos extends JFrame {
 	// Método para guardar datos en MySQL
 	private void guardarDatosEnMySQL() {
 		// Verificando que los campos obligatorios no estén vacíos
-		if (textField_id.getText().isEmpty() || textField_title.getText().isEmpty() || textField_description.getText().isEmpty() || 
-		    textField_resourceURI.getText().isEmpty() || textField_urlImagen.getText().isEmpty() || textField_urlImagen.getText().isEmpty() ) {
+		if (textField_id.getText().isEmpty() || textField_title.getText().isEmpty()
+				|| textField_description.getText().isEmpty() || textField_resourceURI.getText().isEmpty()
+				|| textField_urlImagen.getText().isEmpty() || textField_urlImagen.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "¡Todos los campos obligatorios deben estar llenos!");
 		} else {
-		    // Si todos los campos obligatorios tienen valores, proceder con la asignación de variables
-		    int id = Integer.parseInt(textField_id.getText());
-		    String title = textField_title.getText();
-		    String descripcion = textField_description.getText();
-		    String resourceURI = textField_resourceURI.getText();
-		    int startYear = (int) spinner_startYear.getValue();
-		    int endYear = (int) spinner_endYear.getValue();
-		    String urlImagen = textField_urlImagen.getText();
-		    int storyAvailable = (int) spinner_storyAvailable.getValue();
-		    int storyReturned = (int) spinner_storyReturned.getValue();
+			// Si todos los campos obligatorios tienen valores, proceder con la asignación
+			// de variables
+			int id;
+			int startYear;
+			int endYear;
+			int storyAvailable;
+			int storyReturned;
+			try {
+				id = Integer.parseInt(textField_id.getText());
+				startYear = (int) spinner_startYear.getValue();
+				endYear = (int) spinner_endYear.getValue();
+				storyAvailable = (int) spinner_storyAvailable.getValue();
+				storyReturned = (int) spinner_storyReturned.getValue();
+			} catch (NumberFormatException e) {
+				JOptionPane.showMessageDialog(null,
+						"Los campos ID, Año de inicio, Año de finalización, Disponibilidad de historia y Retorno de historia deben ser números enteros.");
+				return; // Salir del método si hay un error de formato
+			}
+
+			String title = textField_title.getText();
+			String descripcion = textField_description.getText();
+			String resourceURI = textField_resourceURI.getText();
+			String urlImagen = textField_urlImagen.getText();
+
 			ConexionMySQL conexionMySQL = new ConexionMySQL();
 			conexionMySQL.conexionOpen();
 			String sql = "INSERT INTO Series (id, title, description, resourceURI, startYear, endYear, urlImagen, storyAvailable, storyReturned) "
-					+ "VALUES ('" + id + "', '" + title + "', '" + descripcion + "', '" + resourceURI + "', " + startYear
-					+ ", " + endYear + ", '" + urlImagen + "', " + storyAvailable + ", " + storyReturned + ")";
+					+ "VALUES ('" + id + "', '" + title + "', '" + descripcion + "', '" + resourceURI + "', "
+					+ startYear + ", " + endYear + ", '" + urlImagen + "', " + storyAvailable + ", " + storyReturned
+					+ ")";
 			conexionMySQL.insertarDatos(sql);
 			JOptionPane.showMessageDialog(null, "Campo registrado correctamente.");
 			conexionMySQL.cerrarConexion();
@@ -305,5 +321,6 @@ public class InsertarDatos extends JFrame {
 			spinner_storyAvailable.setValue(1);
 			spinner_storyReturned.setValue(1);
 		}
+
 	}
 }

@@ -24,9 +24,9 @@ public class ConexionMySQL {
 	// Abre una conexión a la base de datos
 	public Connection conexionOpen() {
 		String userName = "root";
-		String password = "gcf24ea2chBeaABhBcA1A-1c5GDdH51F";
+		String password = "DbGfcB5c63FF132AaB5af23G5c6gh5ab";
 		String baseDeDatos = "railway";
-		String url = "jdbc:mysql://@monorail.proxy.rlwy.net:15694/" + baseDeDatos;
+		String url = "jdbc:mysql://@monorail.proxy.rlwy.net:34858/" + baseDeDatos;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, userName, password);
